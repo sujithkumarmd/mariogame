@@ -1,0 +1,3 @@
+function send_form(){$.ajaxSetup({headers:{'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')}});var post_url=$("#win-form").attr("action");var form_data=$("#win-form").serialize();$.post(post_url,form_data,function(response){if(response.success==true){alert('Now you claim the mini console, wait for the results on November 25');}else{alert('Something went wrong. Try later');}
+$('.modal-close').click();});}
+$(document).ready(function(){$("#win-form").validate({rules:{email:{required:true,minlength:6,},social_link:{required:true,minlength:6,},},messages:{email:{required:"email require",},social_link:{required:"link require",},},submitHandler:function(){send_form();}});});
